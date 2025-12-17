@@ -116,6 +116,9 @@
             padding: 20px;
             margin: 20px 0;
             border-radius: 0 8px 8px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .definition-box {
@@ -124,6 +127,9 @@
             padding: 20px;
             margin: 20px 0;
             border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .criteria-grid {
@@ -139,6 +145,9 @@
             padding: 20px;
             border-radius: 8px;
             transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
         }
         
         .criterion:hover {
@@ -155,6 +164,9 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .elements-table th, .elements-table td {
@@ -178,6 +190,9 @@
             padding: 25px;
             margin: 30px 0;
             border-radius: 0 8px 8px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .legal-reference {
@@ -186,6 +201,9 @@
             margin: 10px 0;
             padding-left: 15px;
             border-left: 3px solid #ccc;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .faq-section {
@@ -194,6 +212,9 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .faq-question {
@@ -248,6 +269,9 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         
         .points-grid {
@@ -264,7 +288,23 @@
             border-top: 1px solid #ddd;
             color: #666;
             font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+        
+        /* Стили для видимых элементов */
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        /* Задержки для анимации */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
         
         @media (max-width: 900px) {
             .header-container {
@@ -295,6 +335,127 @@
                 padding: 20px;
             }
         }
+        /* Добавьте эти стили в существующий CSS */
+@media (max-width: 600px) {
+    /* Стили для адаптивной таблицы */
+    .elements-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .elements-table table {
+        min-width: 600px; /* Минимальная ширина для сохранения читаемости */
+    }
+    
+    .elements-table th,
+    .elements-table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    /* Альтернативный вариант: вертикальное отображение таблицы */
+    .mobile-table-view {
+        display: none;
+    }
+    
+    @media (max-width: 480px) {
+        /* Полностью адаптивный вариант для очень маленьких экранов */
+        .elements-table table {
+            display: block;
+            width: 100%;
+            min-width: 0;
+        }
+        
+        .elements-table thead {
+            display: none;
+        }
+        
+        .elements-table tbody {
+            display: block;
+            width: 100%;
+        }
+        
+        .elements-table tr {
+            display: block;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .elements-table td {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 15px;
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        
+        .elements-table td:last-child {
+            border-bottom: none;
+        }
+        
+        .elements-table td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            width: 40%;
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 0.85rem;
+        }
+        
+        /* Скрываем оригинальную таблицу, показываем адаптивную версию */
+        .elements-table:not(.mobile-adapted) {
+            overflow: visible;
+        }
+        
+        .elements-table:not(.mobile-adapted) table {
+            display: none;
+        }
+        
+        .elements-table.mobile-adapted {
+            display: block;
+        }
+    }
+}
+
+/* Если хотите сделать таблицу всегда адаптивной на мобильных, добавьте этот стиль: */
+@media (max-width: 480px) {
+    .elements-table-wrapper {
+        width: 100%;
+        overflow: visible;
+    }
+    
+    .elements-table {
+        border: none;
+        background: transparent;
+    }
+    
+    .elements-table tr {
+        background: white;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    .elements-table td {
+        border: none;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .elements-table tr:last-child {
+        margin-bottom: 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -317,7 +478,7 @@
                 <p>Трудовая функция является ключевым элементом, формирующим сущность трудового правоотношения. Она служит юридическим ядром, вокруг которого строятся права, обязанности, гарантии и ответственность сторон трудового договора.</p>
                 <p>В современном трудовом праве понятие трудовой функции имеет фундаментальное значение, определяя не только содержание трудовой деятельности работника, но и правовые рамки взаимоотношений между работником и работодателем.</p>
                 
-                <div class="definition-box">
+                <div class="definition-box fade-in">
                     <h3>Нормативное определение</h3>
                     <p>Согласно <strong>ст. 57 Трудового кодекса РФ (ТК РФ)</strong>, трудовая функция — это обязательное условие, которое должно быть включено в трудовой договор. Законодатель определяет ее двояко:</p>
                     <ol>
@@ -393,22 +554,22 @@
                 <p>Для того чтобы трудовая функция была четкой и выполняла свою роль в трудовых правоотношениях, она должна отвечать ряду критериев, которые выделяются в теории трудового права и подтверждаются судебной практикой.</p>
                 
                 <div class="criteria-grid">
-                    <div class="criterion">
+                    <div class="criterion delay-1">
                         <h4>Критерий нормативного соответствия</h4>
                         <p>Наименование и требования функции должны соответствовать законодательству, особенно если работа связана с предоставлением компенсаций, льгот или ограничений (вредные/опасные условия труда).</p>
                     </div>
                     
-                    <div class="criterion">
+                    <div class="criterion delay-2">
                         <h4>Критерий определенности и конкретности</h4>
                         <p>Функция должна быть сформулирована так, чтобы и работник, и работодатель однозначно понимали ее границы. Расплывчатые формулировки ведут к правовым конфликтам и затрудняют оценку исполнения обязанностей.</p>
                     </div>
                     
-                    <div class="criterion">
+                    <div class="criterion delay-3">
                         <h4>Критерий стабильности</h4>
                         <p>Это устойчивое условие договора, не подверженное произвольному изменению в одностороннем порядке работодателем. Изменение требует согласия работника или особых обстоятельств, предусмотренных законом.</p>
                     </div>
                     
-                    <div class="criterion">
+                    <div class="criterion delay-4">
                         <h4>Критерий документального закрепления</h4>
                         <p>Трудовая функция фиксируется в нескольких взаимосвязанных документах: трудовом договоре, штатном расписании, а ее детальное содержание — в должностной инструкции или ином локальном нормативном акте.</p>
                     </div>
@@ -463,17 +624,17 @@
         <section class="key-points">
             <h2>Ключевые тезисы</h2>
             <div class="points-grid">
-                <div class="criterion">
+                <div class="criterion delay-1">
                     <h4>Определение</h4>
                     <p>Трудовая функция — это работа по должности/профессии или конкретный вид поручаемой работы (ст. 57 ТК РФ).</p>
                 </div>
                 
-                <div class="criterion">
+                <div class="criterion delay-2">
                     <h4>Правовая природа</h4>
                     <p>Стабильное, существенное условие трудового договора, изменяемое только по соглашению сторон.</p>
                 </div>
                 
-                <div class="criterion">
+                <div class="criterion delay-3">
                     <h4>Основные элементы</h4>
                     <ul>
                         <li>Наименование должности</li>
@@ -482,7 +643,7 @@
                     </ul>
                 </div>
                 
-                <div class="criterion">
+                <div class="criterion delay-4">
                     <h4>Критерии</h4>
                     <ul>
                         <li>Нормативное соответствие</li>
@@ -492,7 +653,7 @@
                     </ul>
                 </div>
                 
-                <div class="criterion">
+                <div class="criterion delay-5">
                     <h4>Значение в спорах</h4>
                     <p>Определяет границы ответственности работника, используется для разграничения трудовых и гражданско-правовых отношений.</p>
                 </div>
@@ -589,6 +750,72 @@
             allAnswers.forEach(answer => {
                 answer.classList.remove('show');
             });
+            
+            // Инициализация анимации появления при скролле
+            initScrollAnimations();
+        });
+        
+        // Функция для анимации появления при скролле
+        function initScrollAnimations() {
+            // Получаем все элементы, которые нужно анимировать
+            const animatedElements = document.querySelectorAll(
+                '.highlight-box, .definition-box, .criterion, .elements-table, ' +
+                '.conclusion, .legal-reference, .faq-section, .key-points, footer'
+            );
+            
+            // Создаем Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Если элемент виден на экране
+                    if (entry.isIntersecting) {
+                        // Добавляем класс для анимации
+                        entry.target.classList.add('fade-in');
+                        // Прекращаем наблюдение после появления
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                // Настройки: запускать анимацию, когда элемент виден на 20%
+                threshold: 0.2,
+                // Небольшой отступ снизу для более плавного появления
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Начинаем наблюдение за каждым элементом
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Анимируем заголовок сразу при загрузке
+            const header = document.querySelector('header');
+            if (header) {
+                header.classList.add('fade-in');
+            }
+            
+            // Анимируем первый блок сразу
+            const firstDefinition = document.querySelector('.definition-box');
+            if (firstDefinition) {
+                firstDefinition.classList.add('fade-in');
+            }
+        }
+        
+        // Запускаем анимацию при полной загрузке страницы
+        window.addEventListener('load', function() {
+            // Небольшая задержка для анимации при загрузке
+            setTimeout(() => {
+                const animatedElements = document.querySelectorAll(
+                    '.highlight-box, .definition-box, .criterion, .elements-table, ' +
+                    '.conclusion, .legal-reference, .faq-section, .key-points, footer'
+                );
+                
+                // Проверяем, поддерживает ли браузер Intersection Observer
+                if (!('IntersectionObserver' in window)) {
+                    // Если не поддерживает, просто показываем все элементы
+                    animatedElements.forEach(el => {
+                        el.classList.add('fade-in');
+                    });
+                }
+            }, 300);
         });
     </script>
 </body>
